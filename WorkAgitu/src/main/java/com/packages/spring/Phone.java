@@ -18,7 +18,7 @@ public class Phone {
 	}
 	@Override
 	public String toString() {
-		return "Phone [countryCode=" + countryCode + ", userNumber=" + userNumber + "]";
+		return  countryCode+"-"+userNumber;
 	}
 	
 	
