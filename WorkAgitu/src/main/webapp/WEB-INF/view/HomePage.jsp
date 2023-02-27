@@ -10,7 +10,8 @@
 .error{
 color:red;
 position:fixed;
-text-align: left
+text-align: left;
+margin-left:30px;
 }
 
 </style>
@@ -39,10 +40,22 @@ text-align: left
   <label>I Agreed to the policy</label>
   <form:errors path="agreement" cssClass="error"/>
   <br>
+  <label>Age</label>
+  <form:input  path="age"/>
+  <form:errors path="age" cssClass="error"/>
+  <br>
+  <label>Date</label>
+  <form:input  path="date"/>
+  <br>
+  <label>Credit Card</label>
+  <form:input  path="creditCard"/><br>
+  <label>Amount </label>
+  <form:input  path="amount"/><br>
   <label>Email</label>
-  <form:input  path="communicationDTO.email"/>
+  <form:input  path="communicationDTO.email"/><br>
   <label>Phone</label>
-  <form:input path=""/>
+  <form:input path="communicationDTO.phone"/><br>
+  
  <input type="submit" value="calculate">
  </p>
  </div>
