@@ -13,11 +13,13 @@ import com.packages.spring.Validator.Age;
 
 public class UserData {
 
+	private String name;
+	
 	@NotBlank(message="user name should not be empty")
 	@Size(min=3,max=15, message="your name should have at least 3 ")
 	private String userName ;
 	
-	@NotBlank(message="crush name should be present")
+	@NotBlank(message= "{crushName.message}")
 	private String crushName ;
 	
 	@AssertTrue (message="need to select the agreement")
@@ -79,6 +81,12 @@ public class UserData {
 	}
 	public void setNumbers(String[] numbers) {
 		this.numbers = numbers;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getUserName() {
 		return userName;

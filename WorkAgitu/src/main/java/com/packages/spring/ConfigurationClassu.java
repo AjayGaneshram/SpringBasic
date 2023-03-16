@@ -32,7 +32,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import com.packages.spring.Model.CreditCardFormatter;
 
 @Configuration
-@ComponentScan(basePackages = "com.packages.spring")
+@ComponentScan(basePackages = {"com.packages.spring"})
 @EnableWebMvc
 public class ConfigurationClassu  implements WebMvcConfigurer{
 

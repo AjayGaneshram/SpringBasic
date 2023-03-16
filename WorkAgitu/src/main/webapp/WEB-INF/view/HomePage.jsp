@@ -21,6 +21,10 @@ margin-left:30px;
  <form:form action="/WorkAgitu/love.com/process-homepage" method="get" modelAttribute="userInfo">
  <div align="center">
  <p >
+ <label for ="name1">Name</label>
+ <form:input id="name1" path="name"/>
+ <form:errors path="name" cssClass="error"/>
+ <br>
  <label for ="name">Your Name</label>
  <form:input id="name" path="userName"/>
  <form:errors path="userName" cssClass="error"/>
@@ -28,7 +32,8 @@ margin-left:30px;
  <br>
  <br>
   <label for ="partner">Your Partner</label>
- <form:input  id="partner" path="crushName"/><br>
+ <form:input  id="partner" path="crushName"/>
+  <form:errors path="crushName" cssClass="error"/><br>
  <br>
  <label>Select lucky number :</label>
 
@@ -53,10 +58,11 @@ margin-left:30px;
   <form:input  path="amount"/><br>
   <label>Email</label>
   <form:input  path="communicationDTO.email"/><br>
+  <form:errors path="communicationDTO.email" cssClass="error"/>
+  <br>
   <label>Phone</label>
   <form:input path="communicationDTO.phone"/><br>
-  
- <input type="submit" value="calculate">
+  <input type="submit" value="calculate">
  </p>
  </div>
  </form:form>
