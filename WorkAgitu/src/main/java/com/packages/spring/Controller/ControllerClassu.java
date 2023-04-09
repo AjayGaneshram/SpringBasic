@@ -11,6 +11,7 @@ import java.util.List;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.packages.spring.CommunicationDTO;
 import com.packages.spring.Phone;
@@ -42,10 +45,17 @@ import com.packages.spring.Validator.EmailValidator;
 import com.packages.spring.Validator.NameValidator;
 
 @Controller
+@SessionAttributes("userInfo")
 public class ControllerClassu {
 
 	@Autowired
 	private EmailValidator emailValidator;
+	
+	@ModelAttribute("userInfo")
+	public UserData userDataObject() {
+		return new UserData();
+	}
+	
 	
 	   @RequestMapping("/welcome")
 		/* @ResponseBody */
@@ -55,11 +65,18 @@ public class ControllerClassu {
 	    {
 	        return "welcome";
 	    }
+	   
 	   @RequestMapping("/email/{userName}")
 	   public String emailMethod(@PathVariable("userName")String userNameDetail,Model model) {
 		model.addAttribute("userName1",userNameDetail.toUpperCase());
 		   return "email";
-	   }  
+	   } 
+	   
+	   @RequestMapping("/session")
+	   public String sessionChecker() {
+		   
+		   return "session";
+	   }
 	   @RequestMapping("/")
 	   //public String getHomePage(Model model) {
 	   //@cookieValue annotation is  used to get the value from cookies (Spring annotation)
@@ -86,6 +103,10 @@ public class ControllerClassu {
 			 */
 		   userData.setCrushName(cookieValue);
 		   
+		   //session
+		   
+		   
+		   
 		   Phone phone=new Phone();
 		   phone.setCountryCode("91");
 		   phone.setUserNumber("977736726");
@@ -105,7 +126,7 @@ public class ControllerClassu {
 	   //path variable is used to get the value from url.
 	   //public String showResultPage(@RequestParam("your_name") String username, @RequestParam("your_partner") String crushName ,Model model) {
 	   //public String showResultPage(UserData userData ,Model model) {
-	   public String showResultPage(@Valid @ModelAttribute("userInfo") UserData userData, BindingResult result,HttpServletResponse response) {
+	   public String showResultPage(@Valid @ModelAttribute("userInfo") UserData userData, BindingResult result,HttpServletResponse response,HttpServletRequest request) {
 		  
 		  System.out.println("data binding value of email"+userData.getCommunicationDTO().getEmail()); 
 		   System.out.println("Inside showResultPage");
@@ -127,11 +148,16 @@ public class ControllerClassu {
 		  cookies.setMaxAge(60*60*24); 
 		  response.addCookie(cookies);
 		  
+		  
+		  //session
+		  
+		  HttpSession session=request.getSession();
+		  session.setAttribute("crushName", userData.getCrushName());
 		  return "resultPage";
 	   }
 	   
 	   @InitBinder
-	   public void initBinder(WebDataBinder binder) {
+	   public void initBinder(WebDataBinder binder ) {
 		   System.out.println("Inside the initbinder method");
 		   
 		   StringTrimmerEditor editor=new StringTrimmerEditor(true);
@@ -158,15 +184,13 @@ public class ControllerClassu {
 		   
 	      //NameValidator validator=new NameValidator();
 		   //adding validator here with spring method
+		   
+	
+		   
 	      binder.addValidators(new NameValidator());
 	      //adding emailvalidator with the help of autowired object
 	     // binder.addValidators(new EmailValidator());	  
-	    		  
-	    		  
-	    		  
-	    		  
+	    		   		  
 	   }
-	   
-	   
 	   
 }

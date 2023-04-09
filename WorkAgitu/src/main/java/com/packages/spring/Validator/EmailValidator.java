@@ -22,7 +22,7 @@ public class EmailValidator  implements Validator{
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "communicationDTO.email", "email.empty");
 		String email=((UserData)target).getCommunicationDTO().getEmail();
 		
-		if(!email.endsWith("@wipro.com"))
+		if(!email.endsWith("@email.com"))
 		{
 			errors.rejectValue("communicationDTO.email", "email.invalid");
 		}

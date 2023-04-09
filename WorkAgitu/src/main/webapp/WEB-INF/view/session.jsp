@@ -7,8 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
- <h1>hi</h1> ${userName1}
- ${crushName}
- ${userInfo.creditCard.firstFour}
+  <h1>Name from session :  ${crushName}</h1>
+
 </body>
 </html>

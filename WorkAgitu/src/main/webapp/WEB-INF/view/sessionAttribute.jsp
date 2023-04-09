@@ -7,8 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
- <h1>hi</h1> ${userName1}
- ${crushName}
- ${userInfo.creditCard.firstFour}
+<h1>Session Atrribute Example ${modelObject1}</h1>
+<a href="/WorkAgitu/love.com/sessionattribute/check/"> Click me to go ${next} </a>
+<br>
+<a href="/WorkAgitu/love.com/${newNext}">Redirect to ${newNext}</a>
 </body>
 </html>

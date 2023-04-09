@@ -17,12 +17,12 @@ public class NameValidator  implements Validator{
 	@Override
 	public void validate(Object target, Errors errors) {
 		// TODO Auto-generated method stub
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "name.empty","Name can't be empty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "name.empty");
 	
 	String name=((UserData)target).getName();
 	if(!name.contains("_"))
 	{
-		errors.rejectValue("name", "name.invalid","name should contain _");
+		errors.rejectValue("name", "name.invalid");
 	}
 	}
 

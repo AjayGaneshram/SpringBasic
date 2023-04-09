@@ -32,10 +32,7 @@ public class UserData {
 	public CommunicationDTO communicationDTO;
 	public CreditCard creditCard;
 	public Date date;
-	
 	public BigDecimal amount;
-	
-	
 	public BigDecimal getAmount() {
 		return amount;
 	}
@@ -100,6 +97,4 @@ public class UserData {
 	public void setCrushName(String crushName) {
 		this.crushName = crushName;
 	}
-	
-	
 }
