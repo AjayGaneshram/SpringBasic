@@ -1,6 +1,7 @@
 package com.packages.spring;
 
 import java.util.List;
+import java.util.Properties;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +11,8 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.validation.MessageCodesResolver;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
@@ -32,7 +35,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import com.packages.spring.Model.CreditCardFormatter;
 
 @Configuration
-@ComponentScan(basePackages = "com.packages.spring")
+@ComponentScan(basePackages = {"com.packages.spring"})
 @EnableWebMvc
 public class ConfigurationClassu  implements WebMvcConfigurer{
 
@@ -61,6 +64,23 @@ public class ConfigurationClassu  implements WebMvcConfigurer{
 		localValidatorFactoryBean.setValidationMessageSource(messageSource());
 		return localValidatorFactoryBean;
 	}
+	
+	@Bean
+	public JavaMailSender getJavaMailSender()
+	{
+		JavaMailSenderImpl javaMailSenderImpl =new JavaMailSenderImpl();
+		javaMailSenderImpl.setHost("smtp.gmail.com");
+		javaMailSenderImpl.setUsername("rkgganeshram@gmail.com");
+		javaMailSenderImpl.setPassword("---");
+		javaMailSenderImpl.setPort(678);
+		
+		Properties mailProperties=new Properties();
+		mailProperties.put("mail.smtp.starttls.enable", true);
+		mailProperties.put("mail.smtp.ssl.trust","smtp.gmail.com");
+		javaMailSenderImpl.setJavaMailProperties(mailProperties);
+		return javaMailSenderImpl;
+	}
+	
 	
 	
 	  @Override 

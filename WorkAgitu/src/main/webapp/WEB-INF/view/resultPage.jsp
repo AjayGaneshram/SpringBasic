@@ -6,9 +6,21 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Register</title>
+<style type="text/css">
+
+body{
+color:white;
+background-color:black;
+}
+</style>
 </head>
-<body>
-<h1 align="center">Love Calculator</h1>
+<body >
+<h1 align="center">User Details</h1>
+<a href="/WorkAgitu/love.com/email/${userInfo.userName}/">send the results through mail</a>
+ <br>
+ <a href="/WorkAgitu/love.com/session">check the session get stored</a>
+ 
+<h1>Name is :</h1>${userInfo.name}
 <h1>User Name is :</h1>${userInfo.userName}
 
 <h1>Crush Name is :</h1>${userInfo.crushName}
@@ -25,6 +37,9 @@ ${temp}
 <br>
 <h1>Date</h1> <h1>${userInfo.date}</h1>
 <br>
-<h1>Credit Card :</h1> <h1>${userInfo.creditCard} </h1>
+<h1>Credit Card :</h1> <h1>${userInfo.creditCard.firstFour} </h1>
+
+
+
 </body>
 </html>

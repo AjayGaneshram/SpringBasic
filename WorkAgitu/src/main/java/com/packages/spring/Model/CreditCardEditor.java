@@ -8,7 +8,7 @@ public class CreditCardEditor  extends PropertyEditorSupport{
 	public String getAsText() {
 		// TODO Auto-generated method stub
 		CreditCard card=(CreditCard) getValue();
-		return "sample "+card.firstFour +"-"+card.secondFour;
+		return "256253-"+card.firstFour +"-"+card.secondFour;
 	}
 	
 	@Override
